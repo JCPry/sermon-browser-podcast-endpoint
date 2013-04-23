@@ -49,12 +49,12 @@ function jpry_sbpe_deactivate() {
     flush_rewrite_rules();
 }
 
-add_action( 'template_redirect', 'jpry_sb_template_redirect' );
+add_action( 'template_redirect', 'jpry_sbpe_template_redirect' );
 /**
  * Handle the 
  * @global WP_Query $wp_query
  */
-function jpry_sb_template_redirect() {
+function jpry_sbpe_template_redirect() {
     global $wp_query;
 
     // Ensure this is a query we want to modify
