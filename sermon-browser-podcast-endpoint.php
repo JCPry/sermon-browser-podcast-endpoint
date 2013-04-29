@@ -28,6 +28,7 @@ add_action( 'plugins_loaded', 'jpry_sbpe_replace_init' );
 function jpry_sbpe_replace_init() {
     remove_action( 'init', 'sb_sermon_init' );
     add_action( 'init', 'jpry_sbpe_init' );
+	add_action( 'init', 'jpry_sbpe_add_endpoint' );
 }
 
 /**
@@ -36,7 +37,7 @@ function jpry_sbpe_replace_init() {
  * @since 1.0
  */
 function jpry_sbpe_activate() {
-    add_rewrite_endpoint( 'podcast', EP_PERMALINK | EP_PAGES );
+    jpry_sbpe_add_endpoint();
     flush_rewrite_rules();
 }
 
@@ -47,6 +48,11 @@ function jpry_sbpe_activate() {
  */
 function jpry_sbpe_deactivate() {
     flush_rewrite_rules();
+}
+
+
+function jpry_sbpe_add_endpoint() {
+	add_rewrite_endpoint( 'podcast', EP_PERMALINK | EP_PAGES );
 }
 
 add_action( 'template_redirect', 'jpry_sbpe_template_redirect' );
